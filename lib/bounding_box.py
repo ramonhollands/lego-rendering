@@ -183,6 +183,14 @@ class BoundingBox:
             self.width/image_width,
             self.height/image_width
         ]
+    
+    def to_box21(self, image_width, image_height):
+        return [
+            self.x1 / image_width,
+            self.y1 / image_height,
+            (self.x2 - self.x1) / image_width,
+            (self.y2 - self.y1) / image_height
+        ]
 
     def __repr__(self):
         return f"BoundingBox({self.x1}, {self.y1}, {self.x2}, {self.y2})"

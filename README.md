@@ -1,3 +1,8 @@
+export PATH="$PATH:~/blender"
+
+
+
+
 ![grid of parts](docs/parts.png)
 
 # Lego Rendering Pipeline
@@ -11,6 +16,19 @@ This uses LDraw's part models and Blender to produce a render.
 A single render typically takes 10-15s on an M1 Pro. There is a draft mode
 that takes a few seconds.
 
+
+## Problems with Ubuntu and snap version of Blender
+Locate the python version.
+In Blender script run:
+import sys
+sys.exec_prefix
+e.g. /snap/blender/4036/3.6/python
+
+In terminal run:
+cd /snap/blender/4036/3.6/python/bin
+./python3.6m -m ensurepip
+curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+./python3.6m -m pip install pillow
 
 ## Parts
 

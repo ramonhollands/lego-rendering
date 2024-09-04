@@ -41,6 +41,7 @@ class RenderOptions:
                  zoom = 1.0,                   # 1.0 for part to fill frame, < 1.0 to zoom out, > 1.0 to zoom in
                  look = Look.NORMAL,           # normal (realistic) or instructions (line art)
                  format = Format.PNG,          # PNG = lossless, transparent backgrounds, JPG much smaller
+                 color_name = None,            # name of the color, for debugging
                  ):
         self.width = width
         self.height = height
@@ -57,6 +58,7 @@ class RenderOptions:
         self.zoom = zoom
         self.look = look
         self.format = format
+        self.color_name = color_name
 
     @property
     def draft(self):

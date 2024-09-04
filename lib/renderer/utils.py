@@ -14,9 +14,18 @@ def rotate_object_randomly(obj, min_angle=-360, max_angle=360):
     random_z = radians(random.uniform(min_angle, max_angle))
     obj.rotation_euler = (random_x, random_y, random_z)
 
-def place_object_on_ground(obj):
+def place_object_on_ground(obj, move_x=None, move_y=None, move_z=None):
     # Update the object's bounding box data
     bpy.context.view_layer.update()
+
+    if move_x is not None:
+        obj.location.x = move_x
+    
+    if move_y is not None:
+        obj.location.y = move_y
+
+    if move_z is not None:
+        obj.location.z = move_z
 
     # Move the object up so that its lowest point is on the ground plane (Z=0)
     obj.location.z -= lowest_z(obj)
@@ -133,7 +142,7 @@ def get_2d_bounding_box(obj, camera):
             x1 = round(min_x * dim_x),
             y1 = round(dim_y - max_y * dim_y),
             x2 = round(max_x * dim_x),
-            y2 = round(max_y * dim_y),
+            y2 = round(dim_y - min_y * dim_y),
         ))
 
     if len(bounding_boxes) == 0:
